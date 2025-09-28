@@ -17,6 +17,7 @@ import Classes from "./pages/Classes";
 import NotFound from "./pages/NotFound";
 import FloatingBookButton from "./components/FloatingBookButton";
 import Events from "./pages/Events";
+import Store from "./pages/Store";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsConditions from "./pages/TermsConditions";
 import RefundPolicy from "./pages/RefundPolicy";
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/instructors" element={<Instructors />} />
           <Route path="/collaborations" element={<Collaborations />} />
           <Route path="/classes" element={<Classes />} />
+          <Route path="/store" element={<Store />} />
           <Route path="/events" element={<Events />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />

@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Card } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { Save, Upload, Edit, FileText, Image, MessageSquare, Users, Calendar, BarChart3, Home, Settings, Eye, UserCog, Plus, Trash2, X, RefreshCw, Trash, Search, Video } from 'lucide-react';
+import { Save, Upload, Edit, FileText, Image, MessageSquare, Users, Calendar, BarChart3, Home, Settings, Eye, UserCog, Plus, Trash2, X, RefreshCw, Trash, Search, Video, ShoppingCart } from 'lucide-react';
 import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -21,6 +21,7 @@ import AdminUsers from './AdminUsers';
 import AdminSEO from './AdminSEO';
 import AdminClasses from './AdminClasses';
 import AdminEvents from './AdminEvents';
+import AdminProducts from './AdminProducts';
 
 interface AdminPanelProps {
   currentUser: {
@@ -110,6 +111,10 @@ const AdminPanel = ({ currentUser }: AdminPanelProps) => {
       title: "Gallery",
       icon: Image,
       id: "gallery"
+    }, {
+      title: "Products",
+      icon: ShoppingCart,
+      id: "products"
     }, {
       title: "Popups",
       icon: MessageSquare,
@@ -214,6 +219,8 @@ const AdminPanel = ({ currentUser }: AdminPanelProps) => {
         return <AdminArticles />;
       case 'gallery':
         return <AdminGallery />;
+      case 'products':
+        return <AdminProducts />;
       case 'popups':
         return <AdminPopups />;
       case 'about':

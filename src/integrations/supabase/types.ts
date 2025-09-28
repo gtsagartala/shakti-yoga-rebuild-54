@@ -14,7 +14,282 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      about_content: {
+        Row: {
+          created_at: string
+          founder_bio: string | null
+          founder_image: string | null
+          founder_name: string | null
+          founder_title: string | null
+          hero_image: string | null
+          hero_subtitle: string | null
+          hero_title: string | null
+          id: string
+          mission: string | null
+          section_image: string | null
+          story: string | null
+          updated_at: string
+          values: Json | null
+          vision: string | null
+        }
+        Insert: {
+          created_at?: string
+          founder_bio?: string | null
+          founder_image?: string | null
+          founder_name?: string | null
+          founder_title?: string | null
+          hero_image?: string | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
+          id?: string
+          mission?: string | null
+          section_image?: string | null
+          story?: string | null
+          updated_at?: string
+          values?: Json | null
+          vision?: string | null
+        }
+        Update: {
+          created_at?: string
+          founder_bio?: string | null
+          founder_image?: string | null
+          founder_name?: string | null
+          founder_title?: string | null
+          hero_image?: string | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
+          id?: string
+          mission?: string | null
+          section_image?: string | null
+          story?: string | null
+          updated_at?: string
+          values?: Json | null
+          vision?: string | null
+        }
+        Relationships: []
+      }
+      articles: {
+        Row: {
+          author: string
+          category: string | null
+          content: string
+          created_at: string
+          excerpt: string | null
+          id: string
+          image_url: string | null
+          published: boolean | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author: string
+          category?: string | null
+          content: string
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author?: string
+          category?: string | null
+          content?: string
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image_url?: string | null
+          published?: boolean | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      bookings: {
+        Row: {
+          class_type: string | null
+          created_at: string
+          email: string
+          experience: string | null
+          id: string
+          name: string
+          phone: string | null
+          preferred_date: string | null
+          preferred_time: string | null
+          special_requests: string | null
+          status: string | null
+        }
+        Insert: {
+          class_type?: string | null
+          created_at?: string
+          email: string
+          experience?: string | null
+          id?: string
+          name: string
+          phone?: string | null
+          preferred_date?: string | null
+          preferred_time?: string | null
+          special_requests?: string | null
+          status?: string | null
+        }
+        Update: {
+          class_type?: string | null
+          created_at?: string
+          email?: string
+          experience?: string | null
+          id?: string
+          name?: string
+          phone?: string | null
+          preferred_date?: string | null
+          preferred_time?: string | null
+          special_requests?: string | null
+          status?: string | null
+        }
+        Relationships: []
+      }
+      contact_content: {
+        Row: {
+          address: Json | null
+          created_at: string
+          email: Json | null
+          hero_subtitle: string | null
+          hero_title: string | null
+          hours: Json | null
+          id: string
+          phone: Json | null
+          updated_at: string
+        }
+        Insert: {
+          address?: Json | null
+          created_at?: string
+          email?: Json | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
+          hours?: Json | null
+          id?: string
+          phone?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          address?: Json | null
+          created_at?: string
+          email?: Json | null
+          hero_subtitle?: string | null
+          hero_title?: string | null
+          hours?: Json | null
+          id?: string
+          phone?: Json | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      gallery_images: {
+        Row: {
+          date: string
+          description: string | null
+          id: string
+          title: string
+          url: string
+          views: number | null
+        }
+        Insert: {
+          date?: string
+          description?: string | null
+          id?: string
+          title: string
+          url: string
+          views?: number | null
+        }
+        Update: {
+          date?: string
+          description?: string | null
+          id?: string
+          title?: string
+          url?: string
+          views?: number | null
+        }
+        Relationships: []
+      }
+      popup_settings: {
+        Row: {
+          button_text: string | null
+          button_url: string | null
+          created_at: string
+          delay: number | null
+          enabled: boolean | null
+          id: string
+          image: string | null
+          message: string | null
+          title: string | null
+        }
+        Insert: {
+          button_text?: string | null
+          button_url?: string | null
+          created_at?: string
+          delay?: number | null
+          enabled?: boolean | null
+          id?: string
+          image?: string | null
+          message?: string | null
+          title?: string | null
+        }
+        Update: {
+          button_text?: string | null
+          button_url?: string | null
+          created_at?: string
+          delay?: number | null
+          enabled?: boolean | null
+          id?: string
+          image?: string | null
+          message?: string | null
+          title?: string | null
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          category: string | null
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string | null
+          is_available: boolean | null
+          name: string
+          price: number
+          stock_quantity: number | null
+          updated_at: string
+          whatsapp_message: string | null
+        }
+        Insert: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_available?: boolean | null
+          name: string
+          price: number
+          stock_quantity?: number | null
+          updated_at?: string
+          whatsapp_message?: string | null
+        }
+        Update: {
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          is_available?: boolean | null
+          name?: string
+          price?: number
+          stock_quantity?: number | null
+          updated_at?: string
+          whatsapp_message?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
