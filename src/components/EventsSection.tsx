@@ -1,9 +1,7 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Calendar, Clock, MapPin, Users, ExternalLink, Share, Sparkles, Star, Zap } from 'lucide-react';
-
 interface Event {
   id: string;
   title: string;
@@ -16,10 +14,8 @@ interface Event {
   capacity: string;
   joinUrl: string;
 }
-
 const EventsSection = () => {
   const [event, setEvent] = useState<Event | null>(null);
-
   const loadEventData = () => {
     const stored = localStorage.getItem('eventData');
     if (stored) {
@@ -99,11 +95,10 @@ Focus: Full-body energy awakening & integration
       localStorage.setItem('eventData', JSON.stringify(defaultEvent));
     }
   };
-
   useEffect(() => {
     // Clear old event data and set new default
     localStorage.removeItem('eventData');
-    
+
     // Load event data with new defaults
     loadEventData();
 
@@ -118,31 +113,25 @@ Focus: Full-body energy awakening & integration
     const handleCustomStorageEvent = () => {
       loadEventData();
     };
-
     window.addEventListener('storage', handleStorageChange);
     window.addEventListener('storage', handleCustomStorageEvent);
-
     return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('storage', handleCustomStorageEvent);
     };
   }, []);
-
   const handleJoinEvent = () => {
     if (event?.joinUrl) {
       window.open(event.joinUrl, '_blank');
     }
   };
-
   const handleShareEvent = async () => {
     if (!event) return;
-
     const shareData = {
       title: event.title,
       text: `Join us for ${event.title} - ${event.description}`,
       url: window.location.href
     };
-
     try {
       if (navigator.share && navigator.canShare(shareData)) {
         await navigator.share(shareData);
@@ -163,10 +152,8 @@ Focus: Full-body energy awakening & integration
       }
     }
   };
-
   if (!event) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+    return <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
           <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
             <Sparkles className="text-primary" size={24} />
@@ -174,12 +161,9 @@ Focus: Full-body energy awakening & integration
           <h2 className="text-2xl font-bold text-foreground mb-4">No Events Available</h2>
           <p className="text-muted-foreground">Check back soon for upcoming events!</p>
         </div>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-primary/5 to-secondary/5 py-12 md:py-20">
         <div className="container mx-auto px-4">
@@ -209,11 +193,7 @@ Focus: Full-body energy awakening & integration
               {/* Event Image */}
               <div className="lg:col-span-2 relative group">
                 <div className="aspect-square lg:aspect-auto lg:h-full min-h-[300px] relative overflow-hidden">
-                  <img 
-                    src={event.image} 
-                    alt={event.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <img src={event.image} alt={event.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   
                   {/* Price Badge */}
@@ -224,12 +204,7 @@ Focus: Full-body energy awakening & integration
                   </div>
 
                   {/* Share Button */}
-                  <Button
-                    onClick={handleShareEvent}
-                    size="icon"
-                    variant="secondary"
-                    className="absolute top-4 right-4 shadow-lg hover:scale-110 transition-transform"
-                  >
+                  <Button onClick={handleShareEvent} size="icon" variant="secondary" className="absolute top-4 right-4 shadow-lg hover:scale-110 transition-transform">
                     <Share size={18} />
                   </Button>
                 </div>
@@ -256,11 +231,11 @@ Focus: Full-body energy awakening & integration
                       <div className="min-w-0">
                         <p className="font-semibold text-foreground text-sm">Date</p>
                         <p className="text-muted-foreground text-xs md:text-sm truncate">
-                          {new Date(event.date).toLocaleDateString('en-US', { 
-                            month: 'short', 
-                            day: 'numeric',
-                            year: 'numeric'
-                          })}
+                          {new Date(event.date).toLocaleDateString('en-US', {
+                          month: 'short',
+                          day: 'numeric',
+                          year: 'numeric'
+                        })}
                         </p>
                       </div>
                     </div>
@@ -298,21 +273,14 @@ Focus: Full-body energy awakening & integration
 
                   {/* Join Button */}
                   <div className="pt-4 space-y-3">
-                    <Button 
-                      onClick={handleJoinEvent}
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg font-semibold transition-all duration-300 hover:scale-[1.02]"
-                    >
+                    <Button onClick={handleJoinEvent} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 text-lg font-semibold transition-all duration-300 hover:scale-[1.02]">
                       <span className="mr-2">Join Event</span>
                       <ExternalLink size={20} />
                     </Button>
                     
                     {/* Admin Edit Button */}
-                    <Button 
-                      onClick={() => window.open('/admin', '_blank')}
-                      variant="outline"
-                      className="w-full py-2 text-sm font-medium border-2 hover:bg-secondary/20 transition-all duration-300"
-                    >
-                      <span className="mr-2">✏️ Admin: Edit Event</span>
+                    <Button onClick={() => window.open('/admin', '_blank')} variant="outline" className="w-full py-2 text-sm font-medium border-2 hover:bg-secondary/20 transition-all duration-300">
+                      <span className="mr-2">Events Details</span>
                     </Button>
                     
                     <p className="text-center text-muted-foreground text-sm mt-2">
@@ -340,25 +308,16 @@ Focus: Full-body energy awakening & integration
               Get in touch with our team for personalized guidance and support.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button 
-                variant="outline"
-                onClick={() => window.open('https://wa.me/918777816410?text=Hi! I have questions about the upcoming event.', '_blank')}
-                className="px-6 py-2"
-              >
+              <Button variant="outline" onClick={() => window.open('https://wa.me/918777816410?text=Hi! I have questions about the upcoming event.', '_blank')} className="px-6 py-2">
                 Get In Touch
               </Button>
-              <Button 
-                onClick={handleJoinEvent}
-                className="px-6 py-2"
-              >
+              <Button onClick={handleJoinEvent} className="px-6 py-2">
                 Register Now
               </Button>
             </div>
           </Card>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default EventsSection;
