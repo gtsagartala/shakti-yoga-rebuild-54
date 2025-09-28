@@ -13,6 +13,8 @@ interface Event {
   image: string;
   capacity: string;
   joinUrl: string;
+  buttonText?: string;
+  buttonUrl?: string;
 }
 const EventsSection = () => {
   const [event, setEvent] = useState<Event | null>(null);
@@ -89,7 +91,9 @@ Focus: Full-body energy awakening & integration
         price: '₹7500 INR / $120 USD',
         image: 'https://i.postimg.cc/VvCNSCSz/5-Day-Meditation.webp',
         capacity: '21 participants',
-        joinUrl: 'https://wa.me/918777816410?text=Hi! I would like to join the 5-Day Meditation, Pelvic floor Flexibility & 7 Chakra Kundalini Activation Course. Please send me the details.'
+        joinUrl: 'https://wa.me/918777816410?text=Hi! I would like to join the 5-Day Meditation, Pelvic floor Flexibility & 7 Chakra Kundalini Activation Course. Please send me the details.',
+        buttonText: 'Event Details',
+        buttonUrl: '/admin'
       };
       setEvent(defaultEvent);
       localStorage.setItem('eventData', JSON.stringify(defaultEvent));
@@ -278,9 +282,13 @@ Focus: Full-body energy awakening & integration
                       <ExternalLink size={20} />
                     </Button>
                     
-                    {/* Admin Edit Button */}
-                    <Button onClick={() => window.open('/admin', '_blank')} variant="outline" className="w-full py-2 text-sm font-medium border-2 hover:bg-secondary/20 transition-all duration-300">
-                      <span className="mr-2">Events Details</span>
+                    {/* Admin Configurable Button */}
+                    <Button 
+                      onClick={() => window.open(event.buttonUrl || '/admin', '_blank')} 
+                      variant="outline" 
+                      className="w-full py-2 text-sm font-medium border-2 hover:bg-secondary/20 transition-all duration-300"
+                    >
+                      <span className="mr-2">{event.buttonText || 'Event Details'}</span>
                     </Button>
                     
                     <p className="text-center text-muted-foreground text-sm mt-2">

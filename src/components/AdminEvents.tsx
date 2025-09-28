@@ -19,6 +19,8 @@ interface Event {
   image: string;
   capacity: string;
   joinUrl: string;
+  buttonText?: string;
+  buttonUrl?: string;
 }
 
 const AdminEvents = () => {
@@ -33,7 +35,9 @@ const AdminEvents = () => {
     price: '',
     image: '',
     capacity: '',
-    joinUrl: ''
+    joinUrl: '',
+    buttonText: '',
+    buttonUrl: ''
   });
 
   useEffect(() => {
@@ -110,7 +114,9 @@ Focus: Full-body energy awakening & integration
         price: '₹7500 INR / $120 USD',
         image: 'https://i.postimg.cc/VvCNSCSz/5-Day-Meditation.webp',
         capacity: '21 participants',
-        joinUrl: 'https://wa.me/918777816410?text=Hi! I would like to join the 5-Day Meditation, Pelvic floor Flexibility & 7 Chakra Kundalini Activation Course. Please send me the details.'
+        joinUrl: 'https://wa.me/918777816410?text=Hi! I would like to join the 5-Day Meditation, Pelvic floor Flexibility & 7 Chakra Kundalini Activation Course. Please send me the details.',
+        buttonText: 'Event Details',
+        buttonUrl: '/admin'
       };
       setEvent(defaultEvent);
     }
@@ -245,6 +251,29 @@ Focus: Full-body energy awakening & integration
                 placeholder="Enter WhatsApp or registration URL"
                 className="mt-1"
               />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="buttonText">Details Button Text</Label>
+                <Input
+                  id="buttonText"
+                  value={event.buttonText || ''}
+                  onChange={(e) => handleInputChange('buttonText', e.target.value)}
+                  placeholder="e.g., Event Details"
+                  className="mt-1"
+                />
+              </div>
+              <div>
+                <Label htmlFor="buttonUrl">Details Button URL</Label>
+                <Input
+                  id="buttonUrl"
+                  value={event.buttonUrl || ''}
+                  onChange={(e) => handleInputChange('buttonUrl', e.target.value)}
+                  placeholder="e.g., /admin or external URL"
+                  className="mt-1"
+                />
+              </div>
             </div>
 
             <Button onClick={handleSave} className="bg-yoga-sage hover:bg-yoga-forest w-full">
